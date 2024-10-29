@@ -83,6 +83,12 @@ async def on_ready():
     send_daily_lunch_menu.start()  # 봇이 준비되면 작업 시작
     print(f'We have logged in as {bot.user}')
 
+@bot.command(name='shutdown', help='봇을 종료합니다.') #유저들이 사용할 수 있는 슬래시(/) 대신 기존 명령어(!)로 종료
+@commands.is_owner()
+async def shutdown(ctx):
+    await ctx.send("봇이 종료됩니다...")
+    await bot.close()  # 봇을 안전하게 종료합니다.
+
 # 슬래시 커맨드 및 일반 명령어 정의 (예: lunch, allergy)
 
 # 슬래시 커맨드
